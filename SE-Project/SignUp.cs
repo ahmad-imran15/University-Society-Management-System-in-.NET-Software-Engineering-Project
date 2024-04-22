@@ -147,10 +147,16 @@
                 return true;
             }
 
-            // Check phone number
-            if (!Regex.IsMatch(phonenumber, @"^\d{11}$"))
+            if (!Regex.IsMatch(fname, @"^[A-Z][a-zA-Z]*((\s|-)[A-Z][a-zA-Z]*)*$"))
             {
-                MessageBox.Show("Phone number must be 11 digits long.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid full name format. Please enter the full name with the first letter of each name capitalized and without any special characters.", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+
+            // Check phone number format
+             if (!Regex.IsMatch(phonenumber, @"^03\d{9}$"))
+            {
+                MessageBox.Show("Phone number must start with '03' and be 11 digits long including '03'.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
 

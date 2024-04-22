@@ -99,7 +99,7 @@ namespace SE_Project
         private void button1_Click(object sender, EventArgs e)
         {
 
-            RegisterSociety registerSociety = new RegisterSociety(loggedInUsername);
+            RegisterSociety registerSociety = new RegisterSociety();
             registerSociety.Show();
         }
 

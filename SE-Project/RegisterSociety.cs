@@ -13,11 +13,11 @@ namespace SE_Project
 {
     public partial class RegisterSociety : Form
     {
-        private string loggedInUsername;
-        public RegisterSociety(string loggedInUsername)
+        
+        public RegisterSociety()
         {
             InitializeComponent();
-            this.loggedInUsername = loggedInUsername;
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
