@@ -77,16 +77,24 @@
                         }
                         else
                         {
-                            if (command.ExecuteNonQuery() == 1)
+                            // Check password length before creating the account
+                            if (textPassword.Text.Length < 8 || textPassword.Text.Length > 15)
                             {
-                                this.Hide();
-                                login main = new login();
-                                main.Show();
-                                MessageBox.Show("Your Account has been Created", "Account Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Password must be between 8 and 15 characters long.", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else
                             {
-                                MessageBox.Show("Error occurred while creating the account", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (command.ExecuteNonQuery() == 1)
+                                {
+                                    this.Hide();
+                                    login main = new login();
+                                    main.Show();
+                                    MessageBox.Show("Your Account has been Created", "Account Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error occurred while creating the account", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
                     }
@@ -97,6 +105,7 @@
                 }
             }
         }
+
 
         public Boolean checkUsername()
         {
@@ -125,26 +134,17 @@
 
         public Boolean checkTextBoxesValues()
         {
-
-
             String fname = textBoxName.Text;
             String phonenumber = textBoxPhonenumber.Text;
             String email = textBoxEmail.Text;
             String uname = txtUsername.Text;
             String pass = textPassword.Text;
 
-
-
             if (fname.Equals("Enter Name") || phonenumber.Equals("Enter Phone Number") || email.Equals("Enter Email")
                 || uname.Equals("Enter Username") || pass.Equals("Enter Password"))
             {
-
                 MessageBox.Show("Please fill in all fields.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 return true;
-
-
-
             }
 
             // Check phone number
@@ -180,15 +180,9 @@
                 return true;
             }
 
-            else
-            {
-                return false;
-            }
-
-
-
-
+            return false;
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

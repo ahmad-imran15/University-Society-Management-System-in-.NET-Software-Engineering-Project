@@ -188,7 +188,7 @@ namespace SE_Project
             }
 
             // Check password length
-            if (pass.Length < 8 && pass.Length > 15)
+            if (pass.Length > 8 && pass.Length < 15)
             {
                 MessageBox.Show("Password must be between 8 and 15 characters long.", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
