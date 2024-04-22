@@ -96,6 +96,7 @@
             textPassword.PlaceholderText = "Enter Password";
             textPassword.Size = new Size(315, 31);
             textPassword.TabIndex = 5;
+            textPassword.TextChanged += textPassword_TextChanged;
             // 
             // txtUsername
             // 
