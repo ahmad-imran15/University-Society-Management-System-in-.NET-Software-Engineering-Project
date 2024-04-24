@@ -87,6 +87,7 @@
             Controls.Add(button3);
             Controls.Add(dataGridView1);
             Name = "View_Events_by_Students";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "View_Events_by_Students";
             Load += View_Events_by_Students_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

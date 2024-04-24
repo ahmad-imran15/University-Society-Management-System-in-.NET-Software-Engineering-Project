@@ -228,6 +228,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "update_events";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "update_events";
             Load += update_events_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

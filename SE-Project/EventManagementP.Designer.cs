@@ -113,6 +113,7 @@
             Controls.Add(button1);
             Controls.Add(btnSignUp);
             Name = "EventManagementP";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EventManagementP";
             ResumeLayout(false);
         }

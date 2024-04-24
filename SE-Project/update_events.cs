@@ -136,6 +136,7 @@ namespace SE_Project
 
                 dataGridView1.DataSource = dataTable;
             }
+            dataGridView1.CellClick += dataGridView1_CellClick;
         }
 
         private void update_events_Load(object sender, EventArgs e)
@@ -158,7 +159,6 @@ namespace SE_Project
                 dateTimePicker2.Value = Convert.ToDateTime(selectedRow.Cells["ending_date"].Value);
             }
         }
-
         private void UpdateEvent(int eventId, string eventName, DateTime startDate, DateTime endDate, string description)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

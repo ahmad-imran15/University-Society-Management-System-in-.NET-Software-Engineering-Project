@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -65,7 +66,55 @@ namespace SE_Project
         }
 
 
-        private void textBoxName_TextChanged(object sender, EventArgs e)
+        private bool ValidateInputs()
+        {
+            if (textBoxName.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter full name.", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(textBoxName.Text, @"^[A-Z][a-zA-Z]*(\s[A-Z][a-zA-Z]*)*$"))
+            {
+                MessageBox.Show("Invalid full name format. Please enter the full name with the first letter of each name capitalized and without any special characters.", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(textBoxPhonenumber.Text, @"^03\d{9}$"))
+            {
+                MessageBox.Show("Phone number must start with '03' and be 11 digits long including '03'.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(textBoxEmail.Text, @"^[a-z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            {
+                MessageBox.Show("Invalid email format. Please enter a valid email address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (txtUsername.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter username.", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(txtUsername.Text, @"^[a-z]"))
+            {
+                MessageBox.Show("Username must start with a lowercase letter.", "Invalid Username", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (textPassword.Text.Length < 8 || textPassword.Text.Length > 15)
+            {
+                MessageBox.Show("Password must be between 8 and 15 characters long.", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+
+            private void textBoxName_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -94,6 +143,11 @@ namespace SE_Project
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
+
+            if (!ValidateInputs())
+            {
+                return; // Exit if inputs are not valid
+            }
             string connectionString = "Data Source=ANONYMOUS\\SQLEXPRESS;Initial Catalog=SE_Project;Integrated Security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

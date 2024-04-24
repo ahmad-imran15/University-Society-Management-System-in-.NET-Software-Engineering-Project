@@ -161,7 +161,7 @@
             }
 
             // Check email format
-            if (!Regex.IsMatch(email, @"^[a-z0-9._%+-]+@(gmail\.com|yahoo\.com|nu\.edu\.pk)$"))
+            if (!Regex.IsMatch(email, @"^[a-z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
             {
                 MessageBox.Show("Invalid email format. Please enter a valid email address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;

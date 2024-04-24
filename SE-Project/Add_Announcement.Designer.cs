@@ -96,6 +96,7 @@
             Controls.Add(button1);
             Controls.Add(txtDescription);
             Name = "Add_Announcement";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Add_Announcement";
             Load += Add_Announcement_Load;
             ResumeLayout(false);

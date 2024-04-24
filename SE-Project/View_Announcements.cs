@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SE_Project
 {
-    
+
     public partial class View_Announcements : Form
     {
         string loggedInUsername;
@@ -22,10 +22,10 @@ namespace SE_Project
             InitializeComponent();
         }
 
-        public View_Announcements(string name)
+        public View_Announcements(string loggedInUsername)
         {
             InitializeComponent();
-            name = loggedInUsername;
+            this.loggedInUsername = loggedInUsername;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -54,10 +54,17 @@ namespace SE_Project
                     // Bind the DataTable to the DataGridView
                     dataGridView1.DataSource = dataTable;
 
-                    dataGridView1.Columns["Description"].Width = 200;
+                    dataGridView1.Columns["Description"].Width = 580;
                     dataGridView1.Columns["AnnouncementDate"].Width = 200;
-                    dataGridView1.Columns["PresidentName"].Width = 200;
+                    dataGridView1.Columns["PresidentName"].Width = 150;
                     dataGridView1.Columns["SocietyName"].Width = 200;
+
+                    // Make headers bold
+                    DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
+                    columnHeaderStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+                    dataGridView1.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
+
+
 
 
                 }
@@ -76,9 +83,9 @@ namespace SE_Project
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Student_MainScreen s = new Student_MainScreen();
+            Student_MainScreen s = new Student_MainScreen(loggedInUsername);
             s.Show();
-            
+
         }
     }
 }

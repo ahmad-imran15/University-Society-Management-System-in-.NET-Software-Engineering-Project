@@ -10,9 +10,10 @@ namespace SE_Project
         string loggedInUsername;
         private string connectionString = "Data Source=ANONYMOUS\\SQLEXPRESS;Initial Catalog=SE_Project;Integrated Security=True";
 
-        public View_Events_by_Students()
+        public View_Events_by_Students(string loggedInUsername)
         {
             InitializeComponent();
+            this.loggedInUsername = loggedInUsername;
         }
 
 
@@ -45,7 +46,7 @@ namespace SE_Project
         private void button7_Click(object sender, EventArgs e)
         {
 
-            Student_MainScreen mainscrreen1 = new Student_MainScreen();
+            Student_MainScreen mainscrreen1 = new Student_MainScreen(loggedInUsername);
             mainscrreen1.Show();
             this.Hide();
         }

@@ -139,26 +139,17 @@ namespace SE_Project
 
         public Boolean checkTextBoxesValues()
         {
-
-
             String fname = textBoxName.Text;
             String phonenumber = textBoxPhonenumber.Text;
             String email = textBoxEmail.Text;
             String uname = txtUsername.Text;
             String pass = textPassword.Text;
 
-
-
             if (fname.Equals("Enter Name") || phonenumber.Equals("Enter Phone Number") || email.Equals("Enter Email")
                 || uname.Equals("Enter Username") || pass.Equals("Enter Password"))
             {
-
                 MessageBox.Show("Please fill in all fields.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 return true;
-
-
-
             }
 
             if (!Regex.IsMatch(fname, @"^[A-Z][a-zA-Z]*((\s|-)[A-Z][a-zA-Z]*)*$"))
@@ -167,15 +158,15 @@ namespace SE_Project
                 return true;
             }
 
-            // Check phone number
-            if (!Regex.IsMatch(phonenumber, @"^\d{11}$"))
+            // Check phone number format
+            if (!Regex.IsMatch(phonenumber, @"^03\d{9}$"))
             {
-                MessageBox.Show("Phone number must be 11 digits long.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Phone number must start with '03' and be 11 digits long including '03'.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
 
             // Check email format
-            if (!Regex.IsMatch(email, @"^[a-z0-9._%+-]+@(gmail\.com|yahoo\.com|nu\.edu\.pk)$"))
+            if (!Regex.IsMatch(email, @"^[a-z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
             {
                 MessageBox.Show("Invalid email format. Please enter a valid email address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
@@ -194,20 +185,14 @@ namespace SE_Project
             }
 
             // Check password length
-            if (pass.Length > 8 && pass.Length < 15)
+            if (pass.Length < 8 || pass.Length > 15)
             {
                 MessageBox.Show("Password must be between 8 and 15 characters long.", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
 
-            else
-            {
-                return false;
-            }
 
-
-
-
+            return false;
         }
 
         private void button1_Click(object sender, EventArgs e)

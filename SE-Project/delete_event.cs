@@ -32,13 +32,35 @@ namespace SE_Project
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Get the event ID from the selected row
+                // Get the event ID and event name from the selected row
                 int eventId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["event_id"].Value);
+                string eventName = GetEventName(eventId);
 
                 // Delete the event from the DataGridView and the SQL table
                 DeleteEvent(eventId);
+
+                // Display the event name of the deleted event
+                MessageBox.Show("Event '" + eventName + "' has been deleted.", "Event Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private string GetEventName(int eventId)
+        {
+            string eventName = "";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT event_name FROM eventss WHERE event_id = @eventId", connection);
+                command.Parameters.AddWithValue("@eventId", eventId);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    eventName = reader["event_name"].ToString();
+                }
             }
 
+            return eventName;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -50,9 +72,9 @@ namespace SE_Project
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                query = "SELECT * FROM eventss WHERE event_id LIKE @id";
+                query = "SELECT * FROM eventss WHERE event_name LIKE @name";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                adapter.SelectCommand.Parameters.AddWithValue("@id", txtSearchItem.Text + "%");
+                adapter.SelectCommand.Parameters.AddWithValue("@name", txtSearchItem.Text + "%");
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];

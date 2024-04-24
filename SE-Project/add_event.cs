@@ -133,6 +133,12 @@ namespace SE_Project
             {
                 MessageBox.Show("Please enter a valid event name.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            textBoxName.Clear();
+            txtfeedback.Clear();
+
+
+
+
         }
 
         private void add_event_Load(object sender, EventArgs e)

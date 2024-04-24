@@ -138,6 +138,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(label1);
             Name = "delete_event";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "delete_event";
             Load += delete_event_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

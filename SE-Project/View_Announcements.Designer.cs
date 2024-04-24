@@ -85,6 +85,7 @@
             Controls.Add(button3);
             Controls.Add(dataGridView1);
             Name = "View_Announcements";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "View_Announcements";
             Load += View_Announcements_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

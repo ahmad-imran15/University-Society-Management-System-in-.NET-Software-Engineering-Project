@@ -193,14 +193,14 @@ namespace SE_Project
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            View_Events_by_Students viewevents = new View_Events_by_Students();
+            View_Events_by_Students viewevents = new View_Events_by_Students(loggedInUsername);
             viewevents.Show();
             this.Hide();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            View_Announcements viewAnnouncements = new View_Announcements();
+            View_Announcements viewAnnouncements = new View_Announcements(loggedInUsername);
             viewAnnouncements.Show();
             this.Hide();
         }

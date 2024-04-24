@@ -179,6 +179,7 @@
             Controls.Add(label2);
             Controls.Add(dateTimePicker1);
             Name = "add_event";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "add_event";
             Load += add_event_Load;
             ResumeLayout(false);
