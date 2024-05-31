@@ -65,7 +65,7 @@ namespace SE_Project
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //nothimg int his
         }
         string query;
         private void txtSearchItem_TextChanged(object sender, EventArgs e)

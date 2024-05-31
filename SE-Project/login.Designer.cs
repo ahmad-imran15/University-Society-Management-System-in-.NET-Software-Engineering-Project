@@ -39,6 +39,7 @@
             linkLabel1 = new LinkLabel();
             button2 = new Button();
             comboBox1 = new ComboBox();
+            button3 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -164,6 +165,19 @@
             comboBox1.TabIndex = 3;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
+            // button3
+            // 
+            button3.BackColor = Color.DarkCyan;
+            button3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(47, 427);
+            button3.Name = "button3";
+            button3.Size = new Size(283, 70);
+            button3.TabIndex = 7;
+            button3.Text = "new random screen";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // login
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -171,6 +185,7 @@
             BackgroundImage = Properties.Resources.backgroundimage1;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1182, 766);
+            Controls.Add(button3);
             Controls.Add(comboBox1);
             Controls.Add(button2);
             Controls.Add(linkLabel1);
@@ -203,5 +218,6 @@
         private LinkLabel linkLabel1;
         private Button button2;
         private ComboBox comboBox1;
+        private Button button3;
     }
 }

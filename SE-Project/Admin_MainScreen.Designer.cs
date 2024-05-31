@@ -68,7 +68,7 @@
             button2.BackColor = Color.DarkCyan;
             button2.Font = new Font("Arial Rounded MT Bold", 13F);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(725, 293);
+            button2.Location = new Point(725, 303);
             button2.Name = "button2";
             button2.Size = new Size(259, 64);
             button2.TabIndex = 4;
