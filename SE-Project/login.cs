@@ -145,12 +145,6 @@ namespace SE_Project
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            newformrandom newformrandom = new newformrandom();
-            newformrandom.Show();
-            
-        }
+       
     }
 }
